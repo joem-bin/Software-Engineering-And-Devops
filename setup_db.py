@@ -3,7 +3,6 @@ import bcrypt
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 DB_NAME = os.getenv("DB_NAME")
 
@@ -21,8 +20,7 @@ def create_tables():
     cursor = conn.cursor()
 
     # Users Table
-    cursor.execute(
-        """
+    cursor.execute("""
         CREATE TABLE users (
             user_id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL UNIQUE,
@@ -30,22 +28,18 @@ def create_tables():
             password BLOB NOT NULL,
             role TEXT NOT NULL
         )
-    """
-    )
+    """)
 
     # Categories Table
-    cursor.execute(
-        """
+    cursor.execute("""
         CREATE TABLE categories (
             category_id INTEGER PRIMARY KEY AUTOINCREMENT,
             category_name TEXT NOT NULL UNIQUE
         )
-    """
-    )
+    """)
 
     # Tickets Table
-    cursor.execute(
-        """
+    cursor.execute("""
         CREATE TABLE tickets (
             ticket_id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER NOT NULL,
@@ -57,12 +51,10 @@ def create_tables():
             FOREIGN KEY (user_id) REFERENCES users(user_id),
             FOREIGN KEY (category_id) REFERENCES categories(category_id)
         )
-    """
-    )
+    """)
 
     # Comments Table
-    cursor.execute(
-        """
+    cursor.execute("""
         CREATE TABLE comments (
             comment_id INTEGER PRIMARY KEY AUTOINCREMENT,
             ticket_id INTEGER NOT NULL,
@@ -72,8 +64,7 @@ def create_tables():
             FOREIGN KEY (ticket_id) REFERENCES tickets(ticket_id),
             FOREIGN KEY (user_id) REFERENCES users(user_id)
         )
-    """
-    )
+    """)
 
     conn.commit()
     conn.close()

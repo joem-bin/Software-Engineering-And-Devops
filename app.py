@@ -303,11 +303,5 @@ def logout():
     return redirect(url_for("home"))
 
 
-
 if __name__ == "__main__":
-    app.run(
-        host=HOST,
-        port=PORT,
-        debug=DEBUG
-    )
-
+    app.run(host=HOST, port=PORT, debug=DEBUG)
