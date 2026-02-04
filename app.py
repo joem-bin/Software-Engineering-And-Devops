@@ -32,11 +32,11 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
-
 ENV = os.getenv("FLASK_ENV", "production")
 DEBUG = ENV == "development"
-HOST = "0.0.0.0" if DEBUG else "127.0.0.1"
+HOST = os.getenv("HOST", "127.0.0.1")
 PORT = int(os.getenv("PORT", 5000))
+DB_NAME = os.getenv("DB_NAME", "app.db")
 
 
 configure_logging()
