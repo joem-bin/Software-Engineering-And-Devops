@@ -121,16 +121,23 @@ Prerequisites
 ## 1. Create a .env file
 
 ```
-FLASK_ENV=development
-SECRET_KEY=your-secret-key
 DB_NAME=app.db
+FLASK_ENV=development
+SECRET_KEY=need-to-generate-this
+
 LOG_DIR=logs
 LOG_LEVEL=INFO
 LOG_FILE=app.log
 
+FLASK_ENV=development
+
+PORT=5000
+HOST=0.0.0.0
+
 ```
 
-** Never commit .env to version control. **
+**Never commit .env to version control.**
+
 <br>
 <br>
 
